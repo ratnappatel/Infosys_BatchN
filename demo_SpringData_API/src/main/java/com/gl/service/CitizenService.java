@@ -12,4 +12,6 @@ public interface CitizenService {
 	public CitizenDTO updateCitizen(int id, CitizenDTO c) throws CitizenException;
 	public CitizenDTO findCitizenDetails(int id) throws CitizenException;
 	public String removeCitizenDetails(int id) throws CitizenException;
+	public CitizenDTO findCitizenByName(String name)throws CitizenException;
+	public List<String[]> getCitizenByAddress(String expr);
 }

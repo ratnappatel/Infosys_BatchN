@@ -28,7 +28,9 @@ public class DemoSpringDataApiApplication implements CommandLineRunner {
 		//this.getCitizen();
 		//this.addCitizenDetails();
 		//this.updateDetails();
-		this.removeCitizenDetails();
+		//this.removeCitizenDetails();
+		//this.getByName();
+		this.getByAddressLike();
 		
 	}
 	
@@ -95,5 +97,28 @@ public class DemoSpringDataApiApplication implements CommandLineRunner {
 		} catch (CitizenException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public void getByName()
+	{
+		String name="Maharaj";
+		CitizenDTO citizenDTO=null;
+		try {
+			citizenDTO = service.findCitizenByName(name);
+		} catch (CitizenException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(citizenDTO);
+		
+	}
+	
+	public void getByAddressLike()
+	{
+		String expr="2/5 Heerabagh%";
+		List<String[]> citizens=service.getCitizenByAddress(expr);
+		for(String []s:citizens)
+			System.out.println(s[0]+", "+s[1]);
+		
 	}
 }

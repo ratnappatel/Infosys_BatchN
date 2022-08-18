@@ -103,7 +103,21 @@ Optional<Citizen> optionalCitizen=repository.findById(id);
 		return ct;
 		
 	}
+
+	@Override
+	public CitizenDTO findCitizenByName(String name) throws CitizenException {
+	Optional<Citizen> citizenOptional=repository.findByName(name);
+	Citizen citizen=citizenOptional.orElseThrow(()->new CitizenException("Citizen with name "+name+" not available"));
+		return this.getCitizenDTO(citizen);
+	}
 	
+
+	@Override
+	public List<String[]> getCitizenByAddress(String expr) {
+		List<String []> c=repository.getCitizenByAddress(expr);
+		
+		return c;
+	}
 	
 
 }
