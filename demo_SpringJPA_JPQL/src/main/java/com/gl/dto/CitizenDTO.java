@@ -85,7 +85,7 @@ public class CitizenDTO {
 	@Override
 	public String toString() {
 		return "CitizenDTO [id=" + id + ", dob=" + dob + ", name=" + name + ", address=" + address + ", emailId="
-				+ emailId + ", gender=" + gender + ", mobileNo=" + mobileNo + "]";
+				+ emailId + ", gender=" + gender + ", mobileNo=" + mobileNo + "]\n";
 	}
 	
 	
