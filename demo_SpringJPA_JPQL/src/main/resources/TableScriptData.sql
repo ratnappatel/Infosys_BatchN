@@ -1,3 +1,4 @@
+
 CREATE TABLE `citizens` (
   `id` int NOT NULL DEFAULT '0',
   `name` varchar(50) DEFAULT NULL,
