@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.gl.dto.AddressDTO;
 import com.gl.dto.StudentDTO;
 import com.gl.entity.Student;
 import com.gl.service.StudentService;
@@ -35,11 +36,19 @@ public class DemoSpringPkGenerationApplication implements CommandLineRunner{
 	}
 
 	private void addStudent() {
+		
+		AddressDTO addressDTO=new AddressDTO();
+		addressDTO.setCity("Japiur");
+		addressDTO.setStreet("Heerabagh Flats");
+		
+		
 		StudentDTO studentDTO=new StudentDTO();
-		studentDTO.setName("Uttam");
-		studentDTO.setStream("Information Technology");
+		studentDTO.setName("Ketan");
+		studentDTO.setStream("Civil Engineering");
+		studentDTO.setAddress(addressDTO);
 		
 		studentDTO=service.addStudentDetails(studentDTO);
+		
 		System.out.println(studentDTO);
 	}
 

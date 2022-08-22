@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gl.dto.AddressDTO;
 import com.gl.dto.StudentDTO;
+import com.gl.entity.Address;
 import com.gl.entity.Student;
 import com.gl.repository.StudentRepository;
 
@@ -38,6 +40,13 @@ public class StudentServiceImpl implements StudentService {
 		s.setName(student.getName());
 		s.setStream(student.getStream());
 		
+		AddressDTO addressDTO=new AddressDTO();
+		addressDTO.setId(student.getAddress().getId());
+		addressDTO.setCity(student.getAddress().getCity());
+		addressDTO.setStreet(student.getAddress().getStreet());
+		
+		s.setAddress(addressDTO);
+		
 		return s;
 		
 	}
@@ -48,6 +57,12 @@ public class StudentServiceImpl implements StudentService {
 		s.setRollno(student.getRollno());
 		s.setName(student.getName());
 		s.setStream(student.getStream());
+		Address address=new Address();
+		address.setId(student.getAddress().getId());
+		address.setStreet(student.getAddress().getStreet());
+		address.setCity(student.getAddress().getCity());
+		s.setAddress(address);
+		
 		return s;
 	}
 
