@@ -1,0 +1,360 @@
+
+
+========================    Spring Framework    ==============================================
+When I am doing my own assigned task, I may not be able to perform one more task simultaneously. Hence a work around could be assign second task to someone else. 
+
+Some-One in app development is your service layer .
+
+Because We are going to use Spring Framework to [simplify/speed-up/reduce-efforts of developer] we must follow its structure to be designed.
+
+
+Govt. Rule for Constructing a Shopping Mall
+In shopping mall by installing different-different icons we can make directions easily understandable. 
+
+while using Spring framework to make our code easily understood by other developer we must follow its project structure.
+
+
+Controller: a code[java class] which is diverting[manages flow of app] all request to the perfect destination within application .
+
+
+FOR ANY MAVEN PROJECT 
+SRC/MAIN/RESOURCES DIR: == CLASSPATH DIRECTORY HENCE ALL CONFIGURATION FILE LIKE .PROPERTIES, .CONFIG, .XML FILE MUST BE KEPT HERE
+
+SRC/MAIN/JAVA DIR : == A PLACE WHERE WE PUT OUR APPLICATION CODE TOGETHER
+
+
+Project Development Approach. 
+
+1. Bottom-Up : Database-design ==> repository ==> service ==> controller ==> UI
+2. Top-Down : Database-design <== repository <== service <== controller <== UI
+
+Bean in Spring Terminology
+
+UserInterface ==> Controller [dependency]
+Controller    ==> Service [dependency]
+Service       ==> Repository [dependency]
+
+Tightly coupled == manually creating object using new keywork where ever required..
+is there any way we can avoid these dependency to be tightly coupled.
+
+
+Using spring framework we can manage all dependency to be AUTO-INJECTED without creating them manually.  which helps my application to be unit tested.
+
+
+Spring Framework : Passes all dependencies as argument to setter function or argument to constructor
+
+
+IOC Container:  Runtime environment creates all required dependent object during runtime & passes them as an argument to application where ever requested.
+
+
+For Real-time application all business processes need to be logged [when it executed, via which user, from which ip address, using which type of network ] for better analysis/support other activities 
+
+
+
+Spring Framework : manages all dependencies using core container to container dependencies need to be explained via CONFIGURATION FILE [.java, .xml using Annotation].
+
+
+Lazy loading of resources/beans/components
+
+
+
+CRUD Operation : available in the form of Pre-defined method in CrudRepository
+
+
+
+public Citizen findByName(String name)
+public Citizen findByMobileNo()
+
+public Citizen findByEmailId()
+
+
+
+
+Simple Java Project ==> Add Spring Dependencies ==> Spring Application ==> IOC Container [xml/java/annotation ]
+@Bean("instance_name")
+
+
+What 
+
+Why
+
+Where
+
+How 
+
+@Component : is a class contains application logic 
+@Bean : produce a bean instance . can be given to the class whcih contains data-specific logic + app-specific logic and require any Bean-life-cycle methods to be defined init 
+@Configuration : used to indicate that a class declares one/more bean+methods. 
+
+{"","",""}
+
+WelcomeBean welcomeBean;
+
+Spring not only manages dependency it also manage child dependency for your dependent object
+
+
+ ****************************** Spring Framework ****************************************
+ 
+ what ?: is an open source lightweight framework to manage application[web,enterprise,standalone(Desktop)] development by reducing dependency which leaded to Tightly coupled modules. 
+ 
+ It provide Core-Runtime Environment for Application which will manage all required dependency + child dependencies as well implicitly by defining configuration[declarative-programming].
+ 
+ 
+ Spring Boot- Even makes much more easier to develop Spring -Framework application by following certain architecture.
+ 
+ spring -Boot : manages dependencies + configuration + provides built-in Database + provides built-in webserver[Embeded-WebServer Apache Tomcat]
+ 
+
+I[Application-developer] need spring -framework : now what ever JARs required for that you identify & put them in pom.xml
+
+
+Use Either Sprint-Tool Suite or Spring initializer to develop spring boot application so that it can manage your required dependencies too.
+
+
+Prior to Spring Framework came in to the Development world. Developers were using high-end Application Servers to manage application development.
+
+App-Servers like: Weblogic, Oracle-App Server, IBM's Websphere 
+
+Spring Framework has replaced need for App-Server completely.
+
+Napoline 
+Replace Brocoali - Alep
+Mushroom - Olives
+Extra Cheese Paneer
+
+
+Any/Every configuration in spring boot application can be added to "application.properties" file available under src/main/resource folder of spring boot project.
+
+
+All dependencies which need to be managed by spring container must be kept under sub-package of "Spring boot main Class" package.
+
+
+
+
+In Spring Application									== In Spring Boot Application
+@Configuration
+@ComponentScan(basePackages="com.varni")			== @SpringBootApplication
+@PropertySource("classpath:messages.properties")
+
+com.varni
+		.beans
+			class @Component
+			
+			
+Because Spring Boot main application will instantiate all required dependency so we can use them in our project
+
+Any Java Class marked with Special/Generic annotation is considered as Spring Bean.
+
+
+To Log any data in spring boot application. The application provides default logging framework
+
+
+When we[developer] create STANDALONE/DESKTOP application we should prefer implementing the CommandLineRunner
+
+
+What if Developer want to use external/other api for Logging Mechanism.
+
+For any external Dependency we must very-first  add those APIs in POM.xml and then configure accordingly
+
+AOP : Aspect Oriented Programming helps logging metadata of any method execution.
+
+For Example: 
+
+When method called 
+what to do before method executes
+when method completed its execution
+when method ended-up throwing an exception.
+
+
+Terms used with AOP-Programming
+
+
+Aspect [@Aspect]   : A class={In the form of method it }contains cross cutting concerns [actual AOP logic written here]
+	|
+	|---> Advice		: a method which actually performs some task/action to be taken 
+							while two layer's communicating
+							
+							
+Join-point    : ACTION = executing-method,modifying-Object-value,exception-handling which is 
+				connecting two layers of an application.
+
+Pointcut	:  an expression : to define what all to be tracked
+
+
+In service layer developer want to track each method execution metadata.
+
+
+
+Unit-Testing : 
+
+************************************* Persistence Layer **************************************
+
+
+How an application can communicate to back-end database ?
+
+Any Application which is a real-time application always process data by performing CRUD operation. 
+
+
+Create , Read, Update , Delete 
+
+In JDBC API we deal with CRUD operation by writing native queries and perform manual mapping of Java Object ==> Database- Table
+
+insert into
+preparedStatement.setString(1, name);
+
+Read select
+resultSet.getString("name")
+
+
+ORM-Framework : which can generate queries at runtime and maps Java-Object ==> DB-Table by defining annotation based configuration.
+
+Advantages : If we use ORM Framework 
+
+1. Developer need not to write any query ==> they will be generated implicitly by this framework 
+
+2. Developer need not to write any mapping manually in code .They can be handled using annotation
+
+
+Types of Databases: Relational, No-SQL, ORDBMS
+
+In Java Relationship between two classes can be depicted as Inheritance
+In Database Relationship between two table can be depicted as Foreign-Key+Primary-Key
+
+Account Parent					Account (account_no PK)
+SavingAccount Child				SavingsAccount(account_no FK)	
+
+Row 1 == Row 2 ? id == id?
+
+Obj1 == Obj2 equals()
+
+Obj1.getId()
+
+select id from table where name="".
+
+If we use an ORM framework  to manage persistence layer . ORM framework will generate query dynamically @runtime [this query is generic query = can be executed at any database.]
+
+JPA : uses Java Persistence Query Language = JPQL
+
+JPQL : Class + Fields  / SQL : Table + Column
+
+Employee_details [id, name, salary, age] =Table
+
+
+Employee [employeId, name, salary, age] = Class
+
+retrieve name ,age and id of all employee whose salary higher than 50k
+
+SQL : select name, age, id from Employee_details where salary>50k
+
+JPQL : select e.name, e.age, e.employeId from Employee e where e.salary>50k
+
+
+
+For Any ORM Framework Java Object which is mapped to the Database Table is called as Entity
+================================================================
+Each Entity class "MUST DEFINE ONE UNIQUE IDENTIFIER AS FIELD/PROPERTY".
+
+If an Entity class contains some fields which need not to be mapped with any column then we can mark them as @Transient
+
+
+@Entity [@Id] Must be there
+
+If column name != instance_variable name ==> use @Column 
+If class name != Table name ==> @Table annotation
+
+If field is of Enum Type ==> @Enumerated
+
+An Entity class should conatin hashCode & equals method overriden to provide Object's comparison logic without fail.
+
+===============================================================
+
+MySQL = MSSQL = Oracle = DB2 = 
+
+
+Native JDBC API   <==> Spring Data JPA API
+
+Spring Data JPA ?
+
+1. Reduce Code size  == Easy to Debug, Maintain the code
+2. Resolving ORM Impadence == Reduced Effort 
+3. Simplifying == Interaction with DB
+4. Avoiding need of Mapping Logic == Application becomes generic and DB Independent
+5. Can generate Schema [DB &Tables & Records] ==  On behalf of Developer
+
+
+Java Lab Instance : Cloud instance of Mysql Server installed on Centralized server . ' Root ' is called a super user which can not be accessed via third-party application
+
+
+Hence while using Java Lab instance always create own user on MySQL server with all privileges granted .
+
+AFTER LOGGING IN AS ROOT USER FOLLOW THESES STEPS.
+
+Follow The 3 steps:
+
+1. Run Below Command:
+	CREATE USER 'USER_NAME'@'LOCALHOST' IDENTIFIED BY 'PASSWORD';
+2. Run Second Command:
+	GRANT PRIVILEGES ON *.* TO 'USER_NAME'@'LOCALHOST';
+3. Run Third Command:
+	FLUSH PRIVILEGES;
+	
+====================== SQL Command using JPQL ============================
+
+SQL = combination of Table[*] & Columns[*]
+
+Business Queries . 
+
+JPQL = Combination of Class[*] & Instance_Var[*]
+
+
+Array /List / Set /Map
+
+More than One Object = Mor than One Record from table.
+
+Single Column + Sinlge Record  = getSingleResult() When we use One-Aggregate function
+
+
+When we run Insert / update / delete command result :  No.of Rows Affected 
+
+
+A Datatype Which can store Hetrogenous values as single variable?
+
+But we can use Generic Datatype called Object to store Hetrogenous values in a single variable
+
+Obj o[string,LocalDate]
+
+Filter Record from Database Table we should use Where clause
+
+
+************************ Primary Key Generation *************************
+
+@GeneratedValue : Persistence API[javax.persistence.*] marks a field/instance_var/property of Entity[@Entity] as Auto-generated value field mapped to DB-Table 
+
+
+
+
+1	100		1001
+2	101		1002
+3	102		1003	
+4	103		1004	
+5	104		1005
+
+Neelkanth Patel		NP001
+Uttam Shah			US002
+
+
+Hibernate Framework : contains pre-defined class+interfaces which can help in generating primary key before inserting new data to the DB.
+
+
+Strategy : Identity
+Default Behavior 
+
+Persistence layer will request Database to generated next Primary key ==> Database will execute query internally [select max_value+1 (select max(id) from citizen)]
+
+
+
+What if I wanted to add 10 everytime while generating new primary key? ==> add additional configuration to instruct databse for incrementing id's to next 10th value
+
+Table Generation strategy requires an additional table to be created
+Default Table name should hibernate_sequence
+to define customized table create with any name and assign it through @TableGenerator + generator attribute of @GeneratedValue
