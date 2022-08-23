@@ -24,8 +24,7 @@ public class DemoSpringPkGenerationApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		this.addStudent();
-		this.getAllStudent();
-		
+		this.getAllStudent();		
 	}
 
 	private void getAllStudent() {

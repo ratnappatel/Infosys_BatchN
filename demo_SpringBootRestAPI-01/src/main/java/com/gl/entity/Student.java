@@ -2,17 +2,12 @@ package com.gl.entity;
 
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 
 @Entity
-
 public class Student {
 	
 	@Id
@@ -20,20 +15,14 @@ public class Student {
 	private int rollno;
 	private String name;
 	private String stream;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	// always use foreign key column name with joincolumn annotation
-	@JoinColumn(name="address_id",unique=true)
-	
-	private Address address;
 	public Student() {
+		// TODO Auto-generated constructor stub
 	}
-	public Student(int rollno, String name, String stream, Address address) {
+	public Student(int rollno, String name, String stream) {
 		super();
 		this.rollno = rollno;
 		this.name = name;
 		this.stream = stream;
-		this.address = address;
 	}
 	public int getRollno() {
 		return rollno;
@@ -53,27 +42,20 @@ public class Student {
 	public void setStream(String stream) {
 		this.stream = stream;
 	}
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, name, rollno, stream);
+		return Objects.hash(name, rollno, stream);
 	}
 	@Override
 	public boolean equals(Object obj) {
 		
 		Student other = (Student) obj;
-		return Objects.equals(address, other.address) && Objects.equals(name, other.name) && rollno == other.rollno
-				&& Objects.equals(stream, other.stream);
+		return Objects.equals(name, other.name) && rollno == other.rollno && Objects.equals(stream, other.stream);
 	}
 	@Override
 	public String toString() {
-		return "Student [rollno=" + rollno + ", name=" + name + ", stream=" + stream + ", address=" + address + "]";
+		return "Student [rollno=" + rollno + ", name=" + name + ", stream=" + stream + "]";
 	}
-	
 
+	
 }
