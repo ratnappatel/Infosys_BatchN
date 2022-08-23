@@ -3,6 +3,8 @@ package com.gl.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,16 +25,24 @@ public class StudentAPI {
 	
 	// this is a method needed to be exposed as REST API URL= hostName+URI
 	@GetMapping("/students")
-	public List<StudentDTO> getAllStudent()
+	public ResponseEntity<List<StudentDTO>> getAllStudent()
 	{
-		return service.getAllStudent();
+		List<StudentDTO> list=service.getAllStudent();
+		return new ResponseEntity<>(list,HttpStatus.OK);
 	}
 	
 	
 	@GetMapping("/students/{rollno}")
-	public StudentDTO getStudentDetails(@PathVariable("rollno")Integer rollno)throws StudentException
+	public ResponseEntity<Object> getStudentDetails(@PathVariable("rollno")Integer rollno)
 	{
-		return service.findStudent(rollno);
+	StudentDTO s=null;	
+		try
+		{
+			s=service.findStudent(rollno);
+		} catch (StudentException e) {
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(s,HttpStatus.OK);
 	}
 
 	
